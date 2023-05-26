@@ -1,0 +1,282 @@
+organ#attribute#value
+Motor System#component#bone, bone junctions, skeletal muscles
+Motor System#function#movement and support
+Skeleton#definition#a structure used to support something
+Joint#definition#connecting points between bone fragments of human bones
+Joint#component#joint capsule, articular surface, articular cavity
+Ligament#definition#ligaments belong to dense connective tissue
+Ligament#classification#elastic connective tissue, dense connective tissue
+Ligament#nature#flexible, fibrous dense connective tissue
+Ligament#effect#limit the range of motion of bones to avoid injury
+Spine#position#the median of back and the upper end is connected with the skull
+Spine#characteristic#gradual widening from top to bottom
+Digestive System#component#oral cavity, pharynx, esophagus, stomach, small intestine, large intestine
+Digestive System#status#one of the nine systems of the human body
+Digestive System#component#digestive tract, digestive gland
+Oral Cavity#definition#initial part of digestive tract
+Tooth#definition#organs of human and higher animals chewing food
+Tooth#main ingredient#calcium hydroxyphosphate
+Tooth#effect#cutting, chewing, maintaining facial contour and assisting pronunciation
+Tongue#nature#taste organs
+Tongue#function#perceived taste
+Sublingual Gland#secretion#saliva, mucus
+Pharynx#definition#access to lung and stomach
+Pharynx#function#is the passage of gas
+Pharynx#length#about 12-14cm long
+Pharynx#function#respiratory function
+Esophagus#definition#a passage made up of muscles
+Esophagus#position#connect throat to stomach
+Esophagus#effect#food delivery
+Stomach#function#digest food, secrete enzymes
+Stomach#position#located below the diaphragm, connecting the upper esophagus and the lower intestine
+Small Intestine#component#duodenum, jejunum, ileum
+Small Intestine#position#posterior superior part of abdominal cavity
+Small Intestine#function#absorb nutrients, secrete enzymes, digest food
+Small Intestine#alias#Small Bowel
+Duodenum#position#between stomach and jejunum
+Duodenum#length#20-25cm
+Duodenum#function#absorb nutrients, secrete enzymes, digest food
+Jejunum#definition#the posterior portion of the small intestine and duodenum in mammals
+Jejunum#position#left superior side of abdominal cavity
+Large Intestine#component#colon, rectum
+Large Intestine#definition#an important component of the digestive system
+Large Intestine#function#protect mucosa and lubricate feces
+Colon#definition#an important component of the digestive system
+Colon#function#digest food, absorb water, excrete body waste
+Rectum#definition#the last section of the bowel
+Rectum#function#store feces, excrete feces
+Liver#definition#an organ in the body that has a predominant metabolic function
+Liver#position#right upper abdomen, hidden under diaphragm and deep ribs
+Liver#texture#normal liver is reddish brown with soft texture
+Liver#weight#adults have liver weights equivalent to 2% of their body weight
+Liver#function#biotransformation, detoxification
+Gallbladder#position#pear-shaped pouch structure behind right subcostal liver
+Gallbladder#effect#concentration and storage of bile
+Gallbladder#component#mucosa, muscularis, adventitia
+Gallbladder#function#bile can be directly discharged into the intestine to participate in digestive function
+Gallbladder#divided into#bottom, body, neck and tube
+Mesentery#divided into#mesoappendix, transverse mesocolon
+Mesentery#definition#a part of the peritoneum that suspends and fixes an intestinal tube
+Pancreas#position#transverse the stomach, between the spleen and duodenum
+Pancreas#shape#large slender grape strings
+Pancreas#component#pancreas, islet
+Pancreas#function#reduce blood sugar, promote intestinal protein breakdown
+Respiratory System#component#respiratory tract, lung
+Respiratory System#therapeutic method#negative ion natural therapy
+Nasal Cavity#tissue structure#nasal vestibule, mucosa, blood vessel, lymph, nerve
+Nasal Cavity#position#human head
+Pharynx#function#breathing, diet
+Larynx#function#ventilation, pronunciation
+Larynx#position#upper connecting pharyngeal and lower ventilation tubes
+Trachea#component#cartilage, muscle, connective tissue, mucosa
+Trachea#wall composition#mucosa, submucosa, adventitia
+Trachea#cell composition#ciliated cells, goblet cells, basal cells
+Trachea#function#gas delivery
+Ciliated Cell#function#purify inhaled air
+Bronchial Tube#diameter#1.0-1.5cm
+Bronchial Tube#long#about 5cm
+Lung#function#breathe
+Lung#position#pleural
+Lung#component#bronchi, alveoli, blood vessels, lymphatic vessels
+Diaphragm#function#helping the lungs breathe
+Diaphragm#definition#separation between thoracic and abdominal cavity
+Urinary System#component#kidney, ureter, bladder and urethra
+Urinary System#function#excretion
+Kidney#position#both sides of the spine, close to the posterior abdominal wall
+Kidney#shape#faba bean
+Kidney#function#discharge waste, adjust water and osmotic pressure balance
+Ureter#uplink#renal pelvis
+Ureter#downlink#bladder
+Ureter#shape#elongated pipe, flat cylindrical
+Ureter#characteristic#stones and necrotic tissues tend to stay
+Ureter#diameter#2-5mm
+Ureter#function#delivery of urine
+Bladder#definition#urinary storage organs
+Bladder#position#intrapelvic
+Bladder#function#store urine
+Urethra#definition#pipeline from bladder to the outside of body
+Urethra#function#deliver urine
+Reproductive System#function#reproductive progeny
+Ovary#position#intrapelvic
+Ovary#function#egg emission, sex hormone synthesis
+Fallopian Tube#position#upper margin of broad ligament of uterus
+Fallopian Tube#length#8-15cm
+Fallopian Tube#function#delivery of eggs, fertilization site
+Uterus#position#central pelvic cavity
+Uterus#shape#inverted triangle
+Uterus#function#a place to give birth to new life
+Vagina#function#sexual organ
+Clitoris#shape#cylindrical shape
+Clitoris#effect#stimulate women's libido and pleasure
+Placenta#effect#material exchange, synthetic function
+Testis#artery#testicular artery
+Testis#vein#testicular vein, vine plexus
+Testis#nerve#spermatic plexus
+Testis#lymph#lumbar ganglion
+Testis#effect#reproduction, secretion of hormones
+Epididymis#position#close to the upper and posterior edges of the testis
+Epididymis#structure#head, body and tail
+Epididymis#epididymal duct#about 4-5m long
+Epididymis#epididymal canal function#storage of sperm and secretion of epididymal fluid
+Vas Deferens#effect#delivery of sperm
+Seminal Vesicle#alias#Seminal Vesicle Gland
+Seminal Vesicle#shape#long oval sac
+Seminal Vesicle#function#secretion and storage of semen
+Seminal Vesicle#position#posterior to the bottom of the bladder
+Prostate#definition#male-specific gonadal organs
+Prostate#shape#chestnut-like bottom up, tip down
+Prostate#size#about 4cm transverse, about 3cm vertical, about 2cm anterior and posterior
+Prostate#effect#secretion and control of urination
+Penis#nature#reproduction organs
+Penis#function#urination, sexual intercourse, ejaculation
+Scrotum#definition#a sagging sac of the male vulva
+Scrotum#characteristic#contractile, stretch easily
+Scrotum#effect#protection, temperature regulation
+Breast#function#secreting milk
+Breast#position#chest
+Endocrine System#definition#an integrative regulatory mechanism
+Endocrine System#function#hormone secretion
+Pituitary Gland#position#ventral hypothalamus
+Pituitary Gland#size#1*1.5*0.5cm
+Pituitary Gland#function#secretory hormones
+Pineal Gland#shape#reddish-brown lenticular bodies
+Pineal Gland#long#5-8mm
+Pineal Gland#function#secretion of melatonin and hypoglycemic factors
+Thyroid#function#secretion of thyroid hormones to control metabolism and growth
+Thyroid#position#located in front of trachea
+Thyroid#shape#h-shaped
+Parathyroid#position#close to thyroid
+Parathyroid#function#secretion of parathyroid hormones to maintain calcium and phosphorus balance
+Thymus#weight#10-15g
+Thymus#position#posterior sternum
+Thymus#colour#gray-red
+Thymus#shape#flat ellipse
+Thymus#characteristic#is the body's first aging organ
+Thymus#function#immune organ, endocrine organ
+Adrenal Gland#position#above both kidneys
+Adrenal Gland#function#secretion of adrenaline
+Islets#function#secretion of insulin and glucagon
+Islets#component#many cell clusters of varying sizes and shapes
+Islets#effect#regulation of blood glucose stability
+Gonad#male#testis
+Gonad#female sex#ovary
+Gonad#function#promote the development of gonads and their appendages
+Circulatory System#component#extracellular fluids of organisms
+Heart#component#myocardium
+Heart#four chambers#left atrium, left ventricle, right atrium, right ventricle
+Heart#length#about 15cm
+Heart#weight#about 250g
+Heart#number of heartbeats per year#36 million times
+Heart#function#promote blood flow
+Heart#position#mid-left inferior thoracic cavity
+Artery#definition#vessels emanating from the ventricles
+Artery#function#transport of blood
+Vein#definition#vessels that return blood to the heart
+Vein#function#transport of blood
+Lymphatic System#function#important defense systems
+Lymphatic System#component#lymphatic vessels, lymphoid organs, lymph
+Lymphatic System#occurrence and development#primitive to higher animals
+Lymph Vessel#essence#confluence of capillary lymphatics
+Lymph Vessel#characteristic#thin diameter and thin wall
+Lymph Node#shape#oval
+Lymph Node#interruption#Lymph Vessel
+Lymph Node#function#filter lymph, remove bacteria
+Bone Marrow#definition#hematopoietic tissue
+Bone Marrow#classification#red and yellow bone marrow
+Bone Marrow#function#hematopoiesis, immunity and defense
+Spleen#nature#immune organ
+Spleen#position#relative to 9-11 ribs
+Spleen#function#improve the body's immunity
+Gut-Associated Lymphoid Tissue#type#lymphoid tissue
+Gut-Associated Lymphoid Tissue#position#abdominal and inguinal regions
+Gut-Associated Lymphoid Tissue#function#immunity
+Lymph#function#immunity
+Lymph#definition#colorless transparent liquid containing lymphocytes
+Tonsils#position#lateral wall of isthmus of pharynx
+Tonsils#nature#immune organ
+Tonsils#function#enhance immunity
+Nervous System#classification#central and peripheral nervous systems
+Nervous System#function#regulation of physiological function activities
+Brain#component#telencephalon, diencephalon
+Brain#definition#the most advanced part of the nervous system
+Brain#function#organs of thinking, regulating all activities in the body
+Cerebral Hemisphere#component#internal cerebral nucleus and external cerebral cortex
+Cerebral Hemisphere#definition#the cerebral hemisphere is part of the brain
+Cerebral Hemisphere#function#controlling body motion and sensation
+Diencephalon#position#above the brainstem, the caudate nucleus and the medial side of the internal capsule
+Brainstem#position#below the brain
+Brainstem#function#maintain individual life, control heartbeat and breathing
+Midbrain#effect#reflex centers of vision and hearing
+Midbrain#position#just above the pons is the midpoint of the whole brain
+Pons#position#superior medulla oblongata
+Pons#function#adjust breathing
+Medulla Oblongata#function#processing sensory and motor message delivery
+Medulla Oblongata#position#anterior cerebellum
+Medulla Oblongata#shape#inverted cone
+Cerebellum#component#cerebellar hemisphere, cerebellar tonsil
+Cerebellum#function#maintain balance and integrate nerve impulses
+Cerebellum#position#intracranial fossa
+Spinal Cord#position#spinal canal composed of vertebrae
+Spinal Cord#shape#long cylindrical shape
+Spinal Cord#length#41-45cm
+Spinal Cord#effect#bridge between brain and peripheral nerve
+Ventricle#definition#lacunae within the brain
+Choroid Plexus#position#ventricle
+Choroid Plexus#effect#product cerebrospinal fluid as a buffer medium
+Cranial Nerve#definition#brain sends out right and left pairs of nerves
+Cranial Nerve#type#12 kinds of olfaction, optic nerve, etc
+Cranial Nerve#function#the various organs that govern the face
+Spinal Nerve#logarithm#31
+Spinal Nerve#function#control various activities of trunk
+Ganglion#classification#cerebrospinal ganglion, vegetative ganglion
+Ganglion#the surface layer contains#epimysium
+Ganglion#effect#conductive excitation
+Sense Organ#definition#an organ that senses changes in its surroundings.
+Eye#nature#visual organ
+Eye#color#brown, green, light brown, blue, black
+Eye#eyelid type#binocular eyelid, single eyelid
+Eye#effect#sensing light
+Ear#nature#organ of hearing
+Ear#component#outer ear, middle ear, inner ear
+Ear#function#receive sound
+Nose#nature#olfactory organ
+Nose#characteristic#highly differentiated organs that sense chemical stimuli
+Nose#function#identify odors
+Corneal#position#anterior wall of eyeball
+Corneal#shape#transverse ellipse
+Corneal#function#refracted light
+Iris#position#the anterior part of the blood vessel membrane of the middle layer of the eyeball
+Iris#function#adjust the amount of light entering the eye
+Ciliary Body#definition#circumferential thickening of the posterolateral part of the iris of the eye
+Ciliary Body#effect#generation of aqueous humor and adjustment of refractive capacity of the eye
+Ciliary Body#position#posterolateral part of iris
+Lens#position#anterior vitreous
+Lens#shape#biconvex lenticular
+Lens#diameter#about 9mm
+Lens#definition#main refractive structure of the eyeball
+Lens#effect#refraction
+Retina#component#pigment epithelium, sensory layer of retina
+Retina#function#nourish, regenerate and repair photoreceptor cells
+Retina#position#applying to the posterior wall of the eyeball
+Earlobe#definition#a narrow portion of the lower part of the auricle
+Tympanic Membrane#alias#Eardrum
+Tympanic Membrane#component#elastic gray-white translucent film
+Tympanic Membrane#position#between the external auditory canal and the tympanic cavity
+Tympanic Membrane#shape#oval
+Tympanic Membrane#effect#sensory sound wave
+Middle Ear#effect#propagating sound wave
+Middle Ear#component#tympanic cavity, eustachian tube, tympanic sinus, mastoid process
+Ossicle#definition#the smallest bone in the human body
+Ossicle#number#3 pieces each in left and right ears
+Ossicle#function#shake each other, duplicate sound source, stimulate inner ear
+Inner Ear#nature#components of the hearing system
+Inner Ear#position#between the tympanic cavity and the floor of the internal auditory canal
+Inner Ear#component#bone labyrinth and membrane labyrinth
+Cochlea#position#deep temporal bone
+Cochlea#function#conduct and sense sound waves
+Vestibule Of Ear#position#inner ear
+Vestibule Of Ear#function#relevant to maintaining body balance
+Semicircular Canal#function#maintain posture and balance
+Semicircular Canal#definition#inner ear sensory apparatus
+Parotid#function#secrete saliva, secrete enzymes
+Parotid#nature#salivary gland

@@ -1,0 +1,104 @@
+organ#attribute#value
+Skeleton#belong to#Motor System
+Joint#belong to#Motor System
+Ligament#belong to#Motor System
+Spine#belong to#Motor System
+Oral Cavity#belong to#Digestive System
+Tooth#belong to#Digestive System
+Tongue#belong to#Digestive System
+Salivary Gland#belong to#Digestive System
+Parotid Gland#belong to#Digestive System
+Mandibular Gland#belong to#Digestive System
+Sublingual Gland#belong to#Digestive System
+Pharynx#belong to#Digestive System
+Esophagus#belong to#Digestive System
+Stomach#belong to#Digestive System
+Small Intestine#belong to#Digestive System
+Duodenum#belong to#Digestive System
+Jejunum#belong to#Digestive System
+Ileum#belong to#Digestive System
+Large Intestine#belong to#Digestive System
+Liver#belong to#Digestive System
+Gallbladder#belong to#Digestive System
+Parotid#belong to#Digestive System
+Mesentery#belong to#Digestive System
+Pancreas#belong to#Digestive System
+Nasal Cavity#belong to#Respiratory System
+Pharynx#belong to#Respiratory System
+Larynx#belong to#Respiratory System
+Trachea#belong to#Respiratory System
+Bronchial Tube#belong to#Respiratory System
+Lung#belong to#Respiratory System
+Diaphragm#belong to#Respiratory System
+Kidney#belong to#Urinary System
+Ureter#belong to#Urinary System
+Bladder#belong to#Urinary System
+Rectum#belong to#Digestive System
+Colon#belong to#Digestive System
+Urethra#belong to#Urinary System
+Ovary#belong to#Reproductive System
+Fallopian Tube#belong to#Reproductive System
+Uterus#belong to#Reproductive System
+Vagina#belong to#Reproductive System
+Clitoris#belong to#Reproductive System
+Placenta#belong to#Reproductive System
+Testis#belong to#Reproductive System
+Epididymis#belong to#Reproductive System
+Vas Deferens#belong to#Reproductive System
+Seminal Vesicle#belong to#Reproductive System
+Prostate#belong to#Reproductive System
+Penis#belong to#Reproductive System
+Scrotum#belong to#Reproductive System
+Breast#belong to#Reproductive System
+Pituitary Gland#belong to#Endocrine System
+Pineal Gland#belong to#Endocrine System
+Thyroid#belong to#Endocrine System
+Parathyroid#belong to#Endocrine System
+Thymus#belong to#Endocrine System
+Adrenal Gland#belong to#Endocrine System
+Islets#belong to#Endocrine System
+Gonad#belong to#Endocrine System
+Heart#belong to#Circulatory System
+Artery#belong to#Circulatory System
+Vein#belong to#Circulatory System
+Capillary#belong to#Circulatory System
+Lymph Vessel#belong to#Lymphatic System
+Lymph Node#belong to#Lymphatic System
+Bone Marrow#belong to#Lymphatic System
+Thymus#belong to#Lymphatic System
+Spleen#belong to#Lymphatic System
+Gut-Associated Lymphoid Tissue#belong to#Lymphatic System
+Lymph#belong to#Lymphatic System
+Tonsils#belong to#Lymphatic System
+Brain#belong to#Nervous System
+Cerebral Hemisphere#belong to#Nervous System
+Diencephalon#belong to#Nervous System
+Brainstem#belong to#Nervous System
+Midbrain#belong to#Nervous System
+Pons#belong to#Nervous System
+Medulla Oblongata#belong to#Nervous System
+Cerebellum#belong to#Nervous System
+Spinal Cord#belong to#Nervous System
+Ventricle#belong to#Nervous System
+Choroid Plexus#belong to#Nervous System
+Cranial Nerve#belong to#Nervous System
+Spinal Nerve#belong to#Nervous System
+Ganglion#belong to#Nervous System
+Eye#belong to#Sense Organ
+Ear#belong to#Sense Organ
+Nose#belong to#Sense Organ
+Tongue#belong to#Sense Organ
+Corneal#belong to#Eye
+Iris#belong to#Eye
+Ciliary Body#belong to#Eye
+Lens#belong to#Eye
+Retina#belong to#Eye
+Earlobe#belong to#Ear
+Tympanic Membrane#belong to#Ear
+Middle Ear#belong to#Ear
+Ossicle#belong to#Ear
+Inner Ear#belong to#Ear
+Cochlea#belong to#Ear
+Vestibule Of Ear#belong to#Ear
+Semicircular Canal#belong to#Ear
+Olfactory Epithelium#belong to#Nose
