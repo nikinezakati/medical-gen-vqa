@@ -1,0 +1,39 @@
+30:Left Humerus Head
+35:Right Humerus Head
+40:Larynx
+45:Right Femoral Head
+50:Left Femoral Head
+55:Brain Stem
+60:Duodenum
+65:Tooth
+70:Liver
+75:Trachea
+80:Left Eye
+90:Right Eye
+95:Brain Edema
+105:Rectum
+110:Esophagus
+120:Left Ear
+125:Bladder
+130:Right Ear
+135:Left Kidney
+140:Brain Non-enhancing Tumor
+145:Spinal Cord
+150:Kidney Cancer
+155:Right Kidney
+160:Left Temporal Lobe
+165:Stomach
+170:Right Temporal Lobe
+175:Liver Cancer
+180:Heart
+185:Brain Enhancing Tumor
+200:Left Mandible
+205:Small Bowel
+210:Right Mandible
+215:Left Lung
+225:Right Lung
+230:Spleen
+235:Colon
+240:Left Parotid
+245:Lung Cancer
+250:Right Parotid
