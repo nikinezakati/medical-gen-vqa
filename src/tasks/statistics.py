@@ -23,7 +23,7 @@ def data_count(broken_word_dir=BROKEN_WORD_DATA_DIR):
     
     with open(STATS_DATA_DIR+'/raw_count.csv', 'a') as fp:
         writer = csv.writer(fp)
-        writer.writerow(["Word","Count"])    
+        writer.writerow(["Data","Count"])    
         for key, value in dct.items():
             writer.writerow([key, value])
 
@@ -34,8 +34,7 @@ def data_count(broken_word_dir=BROKEN_WORD_DATA_DIR):
     dct = {'raw_valid_count':raw_valid_count}
 
     with open(STATS_DATA_DIR+'/raw_count.csv', 'a') as fp:
-        writer = csv.writer(fp)
-        writer.writerow(["Word","Count"])    
+        writer = csv.writer(fp)  
         for key, value in dct.items():
             writer.writerow([key, value])
 
@@ -46,8 +45,7 @@ def data_count(broken_word_dir=BROKEN_WORD_DATA_DIR):
     dct = {'raw_test_count': raw_test_count}
 
     with open(STATS_DATA_DIR+'/raw_count.csv', 'a') as fp:
-        writer = csv.writer(fp)
-        writer.writerow(["Word","Count"])    
+        writer = csv.writer(fp)  
         for key, value in dct.items():
             writer.writerow([key, value])
 
@@ -66,9 +64,9 @@ def data_count(broken_word_dir=BROKEN_WORD_DATA_DIR):
     english_train_count = len(train_data)
     dct = {'english_train_count':english_train_count}
 
-    with open(STATS_DATA_DIR+'/processed_count.csv', 'a') as fp:
+    with open(STATS_DATA_DIR+'/sentence_count.csv', 'a') as fp:
         writer = csv.writer(fp)
-        writer.writerow(["Word","Count"])    
+        writer.writerow(["Sentence","Count"])    
         for key, value in dct.items():
             writer.writerow([key, value])
 
@@ -78,9 +76,8 @@ def data_count(broken_word_dir=BROKEN_WORD_DATA_DIR):
     english_valid_count = len(valid_data)
     dct = {'english_valid_count':english_valid_count}
 
-    with open(STATS_DATA_DIR+'/processed_count.csv', 'a') as fp:
-        writer = csv.writer(fp)
-        writer.writerow(["Word","Count"])    
+    with open(STATS_DATA_DIR+'/sentence_count.csv', 'a') as fp:
+        writer = csv.writer(fp) 
         for key, value in dct.items():
             writer.writerow([key, value])
 
@@ -91,11 +88,113 @@ def data_count(broken_word_dir=BROKEN_WORD_DATA_DIR):
     english_test_count = len(test_data)
     dct = {'english_test_count': english_test_count}
 
-    with open(STATS_DATA_DIR+'/processed_count.csv', 'a') as fp:
-        writer = csv.writer(fp)
-        writer.writerow(["Word","Count"])    
+    with open(STATS_DATA_DIR+'/sentence_count.csv', 'a') as fp:
+        writer = csv.writer(fp)  
         for key, value in dct.items():
             writer.writerow([key, value])
+
+
+    #unique questions
+    f = open(train_dir, encoding="utf8")
+    train_data = json.load(f)
+    f.close()
+
+    unique_dict=[]
+    unique_questions = []
+    unique_questions_cnt= {}
+    for d in train_data:
+        if d['question'] not in unique_questions:
+            unique_questions.append(d['question'])
+            unique_dict.append(d)
+
+        if d['question'] not in unique_questions_cnt:
+            unique_questions_cnt[d['question']]=1
+        else:
+            unique_questions_cnt[d['question']]+=1
+
+    unique_questions_cnt = dict(sorted(unique_questions_cnt.items(), key=lambda item: item[1],reverse=True))        
+
+    dct = {'train_uniqe_question_count': len(unique_dict)}
+    with open(STATS_DATA_DIR+'/sentence_count.csv', 'a') as fp:
+        writer = csv.writer(fp)   
+        for key, value in dct.items():
+            writer.writerow([key, value])
+
+    with open(STATS_DATA_DIR+'/train_question_unique_count.csv', 'a') as fp:
+        writer = csv.writer(fp)
+        writer.writerow(["Question","Count"])    
+        for key, value in unique_questions_cnt.items():
+            writer.writerow([key, value])        
+
+
+    f = open(validate_dir, encoding="utf8")
+    val_data = json.load(f)
+    f.close()
+
+    unique_dict=[]
+    unique_questions = []
+    unique_questions_cnt= {}
+    for d in val_data:
+        if d['question'] not in unique_questions:
+            unique_questions.append(d['question'])
+            unique_dict.append(d)
+
+        if d['question'] not in unique_questions_cnt:
+            unique_questions_cnt[d['question']]=1
+        else:
+            unique_questions_cnt[d['question']]+=1
+
+    unique_questions_cnt = dict(sorted(unique_questions_cnt.items(), key=lambda item: item[1],reverse=True))             
+
+    dct = {'val_uniqe_question_count': len(unique_dict)}
+    with open(STATS_DATA_DIR+'/sentence_count.csv', 'a') as fp:
+        writer = csv.writer(fp)
+        for key, value in dct.items():
+            writer.writerow([key, value])
+
+    with open(STATS_DATA_DIR+'/val_question_unique_count.csv', 'a') as fp:
+        writer = csv.writer(fp)
+        writer.writerow(["Question","Count"])    
+        for key, value in unique_questions_cnt.items():
+            writer.writerow([key, value])     
+
+
+
+
+    f = open(test_dir, encoding="utf8")
+    test_data = json.load(f)
+    f.close()
+
+    unique_dict=[]
+    unique_questions = []
+    unique_questions_cnt= {}
+    for d in test_data:
+        if d['question'] not in unique_questions:
+            unique_questions.append(d['question'])
+            unique_dict.append(d)
+
+        if d['question'] not in unique_questions_cnt:
+            unique_questions_cnt[d['question']]=1
+        else:
+            unique_questions_cnt[d['question']]+=1
+
+    unique_questions_cnt = dict(sorted(unique_questions_cnt.items(), key=lambda item: item[1],reverse=True))             
+
+    dct = {'test_uniqe_question_count': len(unique_dict)}
+    with open(STATS_DATA_DIR+'/sentence_count.csv', 'a') as fp:
+        writer = csv.writer(fp) 
+        for key, value in dct.items():
+            writer.writerow([key, value])
+
+    with open(STATS_DATA_DIR+'/test_question_unique_count.csv', 'a') as fp:
+        writer = csv.writer(fp)
+        writer.writerow(["Question","Count"])    
+        for key, value in unique_questions_cnt.items():
+            writer.writerow([key, value])                         
+        
+
+
+             
 
     #word
 
@@ -336,9 +435,9 @@ def data_count(broken_word_dir=BROKEN_WORD_DATA_DIR):
     with open(STATS_DATA_DIR+'/word_count.csv', 'a') as fp:
         writer = csv.writer(fp)  
         for key, value in dct.items():
-            writer.writerow([key, value])
+            writer.writerow([key, value])    
 
-
+        
     return uniqe_train_answer_whole, uniqe_val_answer_whole, uniqe_test_answer_whole, unique_train, unique_val, unique_test
 
 
