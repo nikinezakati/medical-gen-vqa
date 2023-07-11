@@ -1,7 +1,0 @@
-Sentence,Count
-english_train_count,4919
-english_valid_count,1053
-english_test_count,1061
-train_uniqe_question_count,597
-val_uniqe_question_count,318
-test_uniqe_question_count,319

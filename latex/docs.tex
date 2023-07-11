@@ -5,13 +5,14 @@
 \usepackage{minted}
 \usepackage{graphicx}
 \usepackage{fontawesome}
+\usepackage[export]{adjustbox}
 
 
 % main details
 \title{Generate Answer to Visual Questions in the Medical Domain: Phase 2}
 \author{Niki Nezakati - 98522094
 \\
-\href{https://github.com/nikinezakati/medical-gen-vqa/tree/phase-one}{\faicon{github}} GitHub Repository}
+\href{https://github.com/nikinezakati/medical-gen-vqa/tree/phase-two}{\faicon{github}} GitHub Repository}
 
 
 
@@ -21,7 +22,7 @@
 	\maketitle
 	\section{Creating the Full Sentence Dataset}
 	
-       In this research, I conducted a study that involved the utilization of the SLAKE dataset, as discussed in phase one. The objective was to generate comprehensive answers from both single and multi-word answers present in the dataset. To accomplish this, I employed the proposed method outlined in the FSVQA article. In order to convert the answers into complete sentences, I leveraged the NLTK language tool and pattern.en part-of-speech tagger. Taking into consideration the relevant question and answer, we applied the language rules introduced in the FSVQA article. A detailed description of these language rules can be found in the table \ref{table1} from this article. By implementing these rules on the SLAKE dataset, we successfully obtained a new dataset comprising answers in the form of complete sentences.
+       In this research, I conducted a study that involved the utilization of the SLAKE \cite{slake} dataset, as discussed in phase one. The objective was to generate comprehensive answers from both single and multi-word answers present in the dataset. To accomplish this, I employed the proposed method outlined in the FSVQA \cite{FSVQA} article. In order to convert the answers into complete sentences, I leveraged the NLTK language tool and pattern.en part-of-speech tagger. Taking into consideration the relevant question and answer, we applied the language rules introduced in the FSVQA article. A detailed description of these language rules can be found in the table \ref{table1} from this article. By implementing these rules on the SLAKE dataset, we successfully obtained a new dataset comprising answers in the form of complete sentences.
        
 
        \begin{table}[h]
@@ -31,194 +32,152 @@
         % \vspace{-2mm}    
 \end{table}
 
-To do this, you should run the bash script located in the run folder named gather\_raw\_data.bash. You can add one argument to this bash which is the output directory and you can specify that or leave it as the default value (data/raw).
+To do this, you should run the bash script located in the run folder named generate\_fs\_answers.sh. You can add one argument to this bash which is the output directory and you can specify that or leave it as the default value (data/full\_sentence\_data).
 
         \begin{minted}[bgcolor=bg]{python}
-        bash run/gather_raw_data.bash
+        bash run/generate_fs_answers.sh
         \end{minted}
 
         
-  After executing the provided bash script, you will have access to the resulting dataset.  This dataset contains medical images along with corresponding question-answer pairs in both English and Chinese. In the downloaded folder, you will find subfolders containing the images, disease types presented in CSV format, mask file, as well as JSON files for training, validation, and test data. Here is the the amount of instances for each subfolder:
+  After executing the provided bash script, you will have access to the resulting dataset.  This dataset contains medical images along with corresponding question and full-sentence answer. 
 
 
+\section{Word2Vec}
+	
+        In order to train Word2Vec on different data categories including Color, KG, Modality, Organ, Plane, Position, Shape, and Size, you should run the bash script located in the run folder named train\_word2vec.sh. You should add the category names and number of iterations to this bash. 
+        \begin{minted}[bgcolor=bg]{python}
+        bash run/dataset_tokenization.sh
+        \end{minted}
 
 		
-		\section{Preprocessing}
+		\section{Tokenization}
+
+        Accurately processing questions entails breaking them down into smaller parts or tokens to enable deep neural networks to carry out the necessary computations. In the context of our experiments, where both the LXMERT and VisualBERT networks are utilized, we rely on BERT network tokenization to extract the features of the input text. This choice is made because both LXMERT and VisualBERT models are built upon the BERT network.
 	
-        To run preprocessing on the data, you should run the bash script located in run folder with name preprocess\_raw\_data.bash. You can add one argument to this bash which is the output directory and you can specify that or leave it as the default value (data/preprocessed).
+        To do this, you should run the bash script located in the run folder named dataset\_tokenization.sh. You should add the annotations and questions paths to this bash, in addition to the tokenizer set to [lxmert]. The output result would be saved in (data/train/tokenized), (data/val/tokenized), and (data/test/tokenized).
         \begin{minted}[bgcolor=bg]{python}
-        bash run/preprocess_raw_data.bash
+        bash run/dataset_tokenization.sh
         \end{minted}
 
+
+        \section{Image Feature Extraction}
+
+        In this study, we employed 4096-dimensional features extracted from the second fully connected layer (fc7) of the VGG model, which consists of 19 layers and was pre-trained on the ImageNet dataset, as our image features. The images were inputted into this model, with each image being treated as having 36 bounding boxes. Subsequently, each bounding box was mapped to a 1024-dimensional feature vector.
+	
+        To do this, first we should resize the images. For this run the bash script located in the run folder named resize\_images.sh. Afterwards, you should run the bash script located in the run folder named extract\_image\_features.sh. You can add one argument to this bash which is the output directory and you can specify that or leave it as the default value (data/imgs).
+        \begin{minted}[bgcolor=bg]{python}
+        bash run/resize_images.sh
+        bash run/extract_image_features.sh
+        \end{minted}
+
+    
+
+
+
+ \section{Language Model and Model Architecture}
+ In this research, inspired by the work of "Generate Answer to Visual Questions with Pre-trained Vision-and-Language Embeddings" \cite{genvqa} we examine 4 model architectures. We utilise VisualBERT and LXMERT embedding space with two different generative decoder heads, including Attention RNNs and Transformers. In order to determine the most effective architecture for visual question answering in the medical domain, we conduct a comprehensive evaluation that combines qualitative and quantitative analysis along with a Human Error Analysis.  We use BLEU, METEOR, and RougeL as our n-gram-based metrics, in addition to Average score and BERTScore as our embedding-based metrics.
+
+ 
+To do this, you should run the bash script located in the run folder named train\_genVQA.sh. You should add the encoder type, decoder type, rnn type, number of rnn layers, the bidirectionallity of the rnn, attention type, attention method, and number of heads and layers if you are utilizing the transformer decoder. The output result containg the scores would be saved in logs directory, named as the time and date of run.
+
+
+\begin{minted}[bgcolor=bg]{python}
+        bash run/train_genVQA.sh
+\end{minted}
+
+The table below shows the performance of the different models.
+
+    \begin{table}[h]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{llccccccc}
+            \hline
+            \multicolumn{2}{l}{Method} &  & \multicolumn{3}{c}{Word-based} &  & \multicolumn{2}{c}{Embedding-based}\\ 
+            \cline{0-1} \cline{4-6} \cline{8-9}
+            Encoder & Encoder & & BLEU & METEOR & ROUGE-L& & \lr{Average Score} & \lr{BERT Score} \\
+            \hline
+            \multirow{2}{*}{VisualBERT} 
+            
+             & \lr{1-LSTM+Bahdanau attention} & & \textbf{\underline{\lr{61.20}}} & \textbf{\underline{\lr{81.81}}} & \textbf{\underline{\lr{79.06}}} & & \textbf{\underline{\lr{96.33}}} & \textbf{\underline{\lr{89.05}}} \\
+            
+             & \lr{3-Transformer} & & \lr{12.30} & \lr{14.11} & \lr{15.00} &  & \lr{61.89} & \lr{33.89} \\
+            \hline
+            
+            \multirow{2}{*}{LXMERT} 
+             & \lr{1-LSTM+Bahdanau attention} & & \lr{56.78} & \lr{77.25} & \lr{75.37} &  & \lr{95.10} & \lr{85.36}\\
+             
+            & \lr{3-Transformer Decoder} & & \lr{24.94} & \lr{52.26} & \lr{53.89} &  & \lr{70.59} & \lr{69.10} \\
+            \hline
+        \end{tabular}
         
-  This preprocessing step selects the English data which will be used in the project. This is done by selecting dictionary instances that have the key-value pair of ['q\_lang'] == 'en' in the JSON files for training, validation, and test data. The resulted data is saved as JSON files for training (4919 instances), validation (1053 instances), and test (1053 instances) data. Here is the the amount of instances for each subfolder:
-
-   \begin{table}[H]
-  \centering
-  \setlength{\tabcolsep}{1.5em}
-  {\renewcommand{\arraystretch}{1.2}
-    \begin{minipage}{15.5cm}
-  \begin{tabular}{ | l | c | r | }
-    \hline
-    English Train Data & English Validation Data & English Test Data \\ \hline
-    4919 & 1053 & 1061 \\ \hline
-  \end{tabular}
-  \end{minipage}}
-  \end{table}
-
-  \section{Tokenization}
-	
-        To run tokenization on the English data, you should run the bash script located in run folder with name break\_data.bash. You can add two arguments to this bash which are the output directory for word and sentence tokenization. You can specify that or leave it as the default value (data/wordbroken) and (data/sentencebroken).
-        \begin{minted}[bgcolor=bg]{python}
-        bash run/break_data.bash
-        \end{minted}
-
-  This step involves tokenizing the English questions and answers into individual words and sentences. Word tokenization is done by splitting the English questions and answers by punctuation marks. In the sentence tokenization process, we include each question individually since they consist of only one sentence. The resulted data is saved as JSON files for training, validation, and test data. Here is the the amount of instances for each subfolder:
+        }
+        \caption{Results of our proposed models on the created dataset. The numbers in the decoder names mean the number of layers}
+        \label{table2}
+        % \vspace{-2mm}    
+    \end{table}
 
 
-  \begin{table}[H]
-  \centering
-  \setlength{\tabcolsep}{0.7em}
-  {\renewcommand{\arraystretch}{1.2}
-    \begin{minipage}{15.5cm}
-    \begin{tabular}{ | l | c | r | }
-    \hline
-    Train Question Words & Validations Question Words & Test Question Words \\ \hline
-    39573 & 8868 & 8722 \\ \hline
-  \end{tabular}
-  \end{minipage}}
-  \end{table}
+As we can see by the results, The utilization of the LSTM recurrent neural network in combination with the attention mechanism as a decoder exhibits superior performance compared to Transformers. One contributing factor to this observation is the limited size of the dataset. Transformers often struggle when confronted with small datasets due to their extensive parameterization and high model capacity. These models, known for their data-hungry nature, require substantial training data to effectively capture complex patterns and generalize to unseen examples. In scenarios with small datasets and a constrained number of training samples, Transformers may lack the necessary diversity and coverage of underlying patterns, consequently leading to overfitting. Furthermore, the large number of parameters in Transformers exacerbates this issue by allowing the models to memorize the limited training samples, hampering their ability to generalize to new data.
 
+Additionally, the quadratic computational complexity introduced by the self-attention mechanism in Transformers becomes particularly challenging to manage when working with smaller datasets. Consequently, the combination of data scarcity and computational inefficiency hampers Transformers' ability to learn meaningful representations from limited data. On the other hand, LSTM, along with attention, excels in capturing sequential dependencies and exhibits more effective handling of inputs with variable length. The recurrent nature of LSTM enables it to retain context from previous time steps, facilitating the modeling of temporal dependencies within the data. Furthermore, the attention mechanism selectively focuses on relevant parts of the input sequence, allowing the model to concentrate on crucial information. In contrast, Transformers operate in parallel and lack frequent connections, making them less suitable for tasks involving sequential data.
 
+The improved performance of LSTM in conjunction with careful attention can be attributed to its robust architecture for capturing temporal patterns, which translates into enhanced performance in various tasks such as translation, text generation, and, in the context of this research, generating answers for image-related questions.
 
-\begin{table}[H]
-  \centering
-  \setlength{\tabcolsep}{0.8em}
-  {\renewcommand{\arraystretch}{1.2}
-    \begin{minipage}{15.5cm}
-  \begin{tabular}{ | l | c | r | }
-    \hline
-    Train Question Sents. & Validations Question Sents. & Test Question Sents. \\ \hline
-    4919 & 1053 & 1061 \\ \hline
-  \end{tabular}
-  \end{minipage}}
-  \end{table}
+\section{Human Analysis}
 
+In addition to the standard measurement criteria, this research incorporates a human evaluation process to assess the performance of the visual question answering system. For this purpose, a subset of elements was randomly selected from the dataset and subjected to evaluation using the superior model that was trained with the described architecture. Human evaluators carefully examined the answers generated by the system and categorized them into four distinct categories based on the type of mistakes observed: 
 
-\begin{table}[H]
-  \centering
-  \setlength{\tabcolsep}{0.9em}
-  {\renewcommand{\arraystretch}{1.2}
-    \begin{minipage}{15.5cm}
-  \begin{tabular}{ | l | c | r | }
-    \hline
-    Train Answer Words & Validations Answer Words & Test Answer Words \\ \hline
-    6912 & 1537 & 1558 \\ \hline
-\end{tabular}
-  \end{minipage}}
-  \end{table}
+\begin{itemize}
+    \item \textbf{EM} (Exact Match)
+    \item \textbf{WA} (Wrong Answer): The model only generates incorrect VQA single/multi-word answers while the context and description are correct.
+    \item \textbf{GE} (Grammatical Error)
+    \item \textbf{WD} (Wrong Description): The model generates the correct VQA single/multi-word answer, but the description is wrong.
+\end{itemize}
 
+The table below illustrates some of these errors.
 
- \section{Statistics}
- To run Statistics on the English data, you should run the bash script located in run folder with name stats.bash.
-        \begin{minted}[bgcolor=bg]{python}
-        bash run/stats.bash
-        \end{minted}
+\vspace{3pt}
 
-This step involves finding unique answer (words), and questions (sentences) in train, validation, and test labels. We categorize them by the common ones (unique words that appear in more than one label), or uncommon ones. The code was designed to generate a count of word and sentence occurrences. The resulted data is saved as CSV files for training, validation, and test data. Here is the the amount of instances for each subfolder:  
-
-
-\begin{table}[H]
-  \centering
-  \setlength{\tabcolsep}{0.4em}
-  {\renewcommand{\arraystretch}{1.2}
-    \begin{minipage}{15.5cm}
-  \begin{tabular}{ | l | c | r | }
-    \hline
-    Unique Train Questions & Unique Validation Questions & Unique Test Questions \\ \hline
-    597 & 318 & 319 \\ \hline
-\end{tabular}
-  \end{minipage}}
-  \end{table}
-
-Bellow are the count of individual words in questions and answers:
-
-\begin{table}[H]
-  \centering
-  \setlength{\tabcolsep}{0.4em}
-  {\renewcommand{\arraystretch}{1.2}
-    \begin{minipage}{15.5cm}
-  \begin{tabular}{ | l | c | r | }
-    \hline
-    Unique Train Questions & Unique Validation Questions & Unique Test Questions \\ \hline
-    284 & 245 & 252 \\ \hline
-\end{tabular}
-  \end{minipage}}
-  \end{table}
-
-
-  \begin{table}[H]
-  \centering
-  \setlength{\tabcolsep}{0.7em}
-  {\renewcommand{\arraystretch}{1.2}
-    \begin{minipage}{15.5cm}
-  \begin{tabular}{ | l | c | r | }
-    \hline
-    Unique Train Answers & Unique Validation Answers & Unique Test Answers \\ \hline
-    275 & 191 & 189 \\ \hline
-\end{tabular}
-  \end{minipage}}
-  \end{table}
-
-
-  \begin{table}[H]
-  \centering
-  \setlength{\tabcolsep}{0.19em}
-  {\renewcommand{\arraystretch}{1.2}
-    \begin{minipage}{15.5cm}
-  \begin{tabular}{ | l | c | r | }
-    \hline
-    Common Uniq. Train Ans. & Common Uniq. Valid Ans. & Common Uniq. Test Ans. \\ \hline
-    230 & 137 & 139 \\ \hline
-\end{tabular}
-  \end{minipage}}
-  \end{table}
-
-
-
-  \begin{table}[H]
-  \centering
-  \setlength{\tabcolsep}{0.5em}
-  {\renewcommand{\arraystretch}{1.2}
-    \begin{minipage}{15.5cm}
-  \begin{tabular}{ | l | c | r | }
-    \hline
-    Uncom. Uniq. Train Ans. & Uncom. Uniq. Valid Ans. & Uncom. Uniq. Test Ans. \\ \hline
-    45 & 54 & 50 \\ \hline
-\end{tabular}
-  \end{minipage}}
-  \end{table}
-
-  
-\newpage
-\vspace{10pt}
-  Finally, the histograms displayed below represent the frequency of occurrence for the top 20 most unique label tokens, considering the large number of distinct tokens involved in the answers.
-  
  \begin{center}
-       \hspace*{-1.5cm}\includegraphics[width=15cm]{images/train_unique_words.png}
+       \hspace*{-0.2cm}\includegraphics[width=12.5cm]{images/eval_table.png}
 \end{center}
 
 
-    \begin{center}
-         \hspace*{-1.5cm}\includegraphics[width=15cm]{images/val_unique_words.png}
-\end{center}
 
 
-    \begin{center}
-         \hspace*{-1.5cm} \includegraphics[width=15cm]{images/test_unique_words.png}
-\end{center}
+%   \begin{table}[H]
+%   \centering
+%   \setlength{\tabcolsep}{0.5em}
+%   {\renewcommand{\arraystretch}{1.2}
+%     \begin{minipage}{15.5cm}
+%   \begin{tabular}{ | l | c | r | }
+%     \hline
+%     Uncom. Uniq. Train Ans. & Uncom. Uniq. Valid Ans. & Uncom. Uniq. Test Ans. \\ \hline
+%     45 & 54 & 50 \\ \hline
+% \end{tabular}
+%   \end{minipage}}
+%   \end{table}
 
-Note that due to the nature of the labels being comprised of single or multiple distinct words, it is not meaningful to assess measures such as the frequency of occurrence of label tokens, or identifying the most commonly appearing words.
+  
+% \newpage
+% \vspace{10pt}
+%   Finally, the histograms displayed below represent the frequency of occurrence for the top 20 most unique label tokens, considering the large number of distinct tokens involved in the answers.
+  
+%  \begin{center}
+%        \hspace*{-1.5cm}\includegraphics[width=15cm]{images/train_unique_words.png}
+% \end{center}
+
+
+%     \begin{center}
+%          \hspace*{-1.5cm}\includegraphics[width=15cm]{images/val_unique_words.png}
+% \end{center}
+
+
+%     \begin{center}
+%          \hspace*{-1.5cm} \includegraphics[width=15cm]{images/test_unique_words.png}
+% \end{center}
+
+% Note that due to the nature of the labels being comprised of single or multiple distinct words, it is not meaningful to assess measures such as the frequency of occurrence of label tokens, or identifying the most commonly appearing words.
 
 
 
@@ -406,6 +365,14 @@ Note that due to the nature of the labels being comprised of single or multiple 
 	\begin{thebibliography}{5}
 		\bibitem{slake}
 		SLAKE: A Semantically-Labeled Knowledge-Enhanced Dataset for Medical Visual Question Answering. Bo Liu, Li-Ming Zhan, Li Xu, Lin Ma, Yan Yang, Xiao-Ming Wu (2021). \url{https://arxiv.org/abs/2102.09542}
+
+		\bibitem{FSVQA}
+		The Color of the Cat is Gray: 1 Million Full-Sentences Visual Question Answering (FSVQA). Andrew Shin, Yoshitaka Ushiku, Tatsuya Harada (2016). \url{https://doi.org/10.48550/arXiv.1609.06657}
+	
+
+		\bibitem{genvqa}
+		Generate Answer to Visual Questions with Pre-trained
+Vision-and-Language Embeddings. Hadi Sheikhi, Maryam Hashemi, Sauleh Eetemad (2022). \url{https://www.winlp.org/wpcontent/uploads/2022/11/73_Paper.pdf}
 	\end{thebibliography}
 	
 \end{document}

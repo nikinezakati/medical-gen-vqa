@@ -1,3 +1,9 @@
-wget==1.21.3
-pattern==23.1.2
-nltk==23.1.2
+wget==3.2
+pattern==3.6.0
+nltk==3.8.1
+transformers==4.30.2
+torch==2.0.1
+evaluate==0.4.0
+rouge_score==0.1.2
+bert_score==0.3.13
+torchmetrics==1.0.0
